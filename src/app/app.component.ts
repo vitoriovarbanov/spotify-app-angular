@@ -25,9 +25,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    return this.http.get(`${this.url}`, { headers: this.headers })
-      .subscribe(data => console.log(data))
+    /* return this.http.get(`${this.url}`, { headers: this.headers })
+      .subscribe(data => console.log(data)) */
 
   }
 
+  authorizeApi(){
+
+    return this.http.get(`https://accounts.spotify.com/authorize?client_id=cba0314e54f34815af7a43d3470fb4cb&response_type=token&redirect_uri=http://localhost:4200/authorize`)
+    .subscribe(data=>console.log(data))
+  }
 }
