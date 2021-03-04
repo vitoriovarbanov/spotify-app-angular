@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GlobalService } from 'src/app/global.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,19 @@ import { HttpClient } from '@angular/common/http';
 export class NavbarComponent implements OnInit {
   clientId: string = 'cba0314e54f34815af7a43d3470fb4cb'
   redirectUri: string = 'http://localhost:4200/authorize'
+  authorized$
 
-  constructor(private http: HttpClient) { }
+  constructor(public gs: GlobalService) {
+    this.gs.authorized$.subscribe(data=>{
+      this.authorized$ = data;
+    })
+  }
 
   ngOnInit(): void { }
+
+  logOutUser(){
+    this.gs.authorized$.next(false)
+    localStorage.removeItem('bearerToken')
+  }
 
 }

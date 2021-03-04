@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute, Router, RouterEvent, NavigationEnd } from '@angular/router';
-import { Route } from '@angular/compiler/src/core';
 import { BehaviorSubject } from 'rxjs';
 import { GlobalService } from './global.service';
 
@@ -15,7 +12,12 @@ export class AppComponent implements OnInit {
   query = `2CIMQHirSU0MQqyYHq0eOx` */
  /*  headers = new HttpHeaders({ 'Authorization': `Bearer ${this.bearer}` }) */
   constructor(private gs: GlobalService) {
-    console.log(this.gs.authorized$.subscribe(data=>console.log(data)))
+    const credits = localStorage.getItem('bearerToken')
+    if(credits==="undefined"){
+      this.gs.authorized$.next(false)
+    }else{
+      this.gs.authorized$.next(true)
+    }
   }
 
   ngOnInit() {
