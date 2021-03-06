@@ -17,9 +17,4 @@ export class FavouritesService {
          return data['items']
       }))
   }
-
-  test(){
-    return this.http.get(`https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg`) //, { headers: headers}
-  }
-
 }

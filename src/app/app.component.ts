@@ -8,9 +8,6 @@ import { GlobalService } from './global.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
- /*  url = `https://api.spotify.com/v1/artists/?ids=2CIMQHirSU0MQqyYHq0eOx`
-  query = `2CIMQHirSU0MQqyYHq0eOx` */
- /*  headers = new HttpHeaders({ 'Authorization': `Bearer ${this.bearer}` }) */
   constructor(private gs: GlobalService) {
     const credits = localStorage.getItem('bearerToken')
     if(credits==="undefined" || !credits){
@@ -20,11 +17,5 @@ export class AppComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-
-    //this.authorized$.subscribe(data=>console.log(data))
-    /* return this.http.get(`${this.url}`, { headers: this.headers })
-      .subscribe(data => console.log(data)) */
-
-  }
+  ngOnInit() { }
 }
