@@ -1,3 +1,35 @@
-<div class="ui segment" style="background: linear-gradient(0deg, rgba(151,233,208,1) 0%, rgba(179,171,198,1) 100%)">
+<div class="ui segment" style='background: linear-gradient(0deg, rgba(151,233,208,1) 0%, rgba(246,255,233,1) 100%)'>
   <h3 style="font-style: italic;">Reveal your favourite Spotify artists with our Web App</h3>
 </div>
+
+<ng-container *ngIf='authorized'>
+  <div class="ui link cards">
+    <div class="card" *ngFor='let artist of favouriteArtists'>
+      <div class="image">
+        <img src="{{artist.images[0].url}}">
+      </div>
+      <div class="content">
+        <div class="header">{{artist.name}}</div>
+        <div class="meta">
+          <a>Friends</a>
+        </div>
+        <div class="description">
+          Matthew is an interior designer living in New York.
+        </div>
+      </div>
+      <div class="extra content">
+        <span class="right floated">
+          Joined in 2013
+        </span>
+        <span>
+          <i class="user icon"></i>
+          75 Friends
+        </span>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+
+

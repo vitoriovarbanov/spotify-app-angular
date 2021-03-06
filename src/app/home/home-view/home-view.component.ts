@@ -9,6 +9,7 @@ import { FavouritesService } from '../favourites.service';
 })
 export class HomeViewComponent implements OnInit {
   authorized
+  favouriteArtists
 
   constructor(private gs: GlobalService, private fav: FavouritesService) {
     this.gs.authorized$.subscribe(data=>{
@@ -18,7 +19,10 @@ export class HomeViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.fav.getUserFavouriteArtists()
-      .subscribe(data=>console.log(data))
+      .subscribe(data=>{
+        this.favouriteArtists = data
+        console.log(this.favouriteArtists)
+      })
   }
 
 }
