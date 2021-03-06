@@ -18,11 +18,14 @@ export class HomeViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fav.getUserFavouriteArtists()
+    if(this.authorized=== true){
+      this.fav.getUserFavouriteArtists()
       .subscribe(data=>{
         this.favouriteArtists = data
         console.log(this.favouriteArtists)
       })
+    }
+
   }
 
 }
