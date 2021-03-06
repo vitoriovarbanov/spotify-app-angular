@@ -32,17 +32,19 @@ export class SpotifyInterceptor implements HttpInterceptor {
       .pipe(catchError((err: HttpErrorResponse) => {
         if (err.status === 401) {
             console.log(`Your session token has expired!`)
-            localStorage.clear()
+            // localStorage.clear()
             this.gs.authorized$.next(false)
             this.router.navigate['']
+            const append = document.createElement('button')
+            append.className = 'ui negative basic button'
+            append.innerText = 'Your session token has expired! Please, log in again!'
+            document.body.appendChild(append)
+            setTimeout(()=>{
+              append.remove()
+            },4000)
         }
-
         return throwError(err)
       }))
-
-
-
-
 
 
   }
