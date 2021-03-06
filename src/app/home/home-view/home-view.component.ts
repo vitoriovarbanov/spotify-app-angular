@@ -23,6 +23,12 @@ export class HomeViewComponent implements OnInit {
         this.favouriteArtists = data
         console.log(this.favouriteArtists)
       })
+
+      this.fav.test()
+        .subscribe((data)=>{console.log(data)})
+
   }
+
+
 
 }
