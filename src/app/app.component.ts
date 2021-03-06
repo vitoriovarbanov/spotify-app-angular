@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
  /*  headers = new HttpHeaders({ 'Authorization': `Bearer ${this.bearer}` }) */
   constructor(private gs: GlobalService) {
     const credits = localStorage.getItem('bearerToken')
-    if(credits==="undefined"){
+    if(credits==="undefined" || !credits){
       this.gs.authorized$.next(false)
     }else{
       this.gs.authorized$.next(true)

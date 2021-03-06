@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, pluck } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
-export class GlobalService {
-  authorized$ = new BehaviorSubject(null)
+export class FavouritesService {
 
   constructor(private http: HttpClient) { }
 
-  getUserPlaylists(){
+  getUserFavouriteArtists(){
     const token = localStorage.getItem('bearerToken')
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` })
-    return this.http.get(`https://api.spotify.com/v1/me/playlists`, { headers: headers })
+    return this.http.get(`https://api.spotify.com/v1/me/top/artists`, { headers: headers })
+       .pipe(map((data)=>{
+         return data['items']
+      }))
   }
 }

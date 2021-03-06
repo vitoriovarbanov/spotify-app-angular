@@ -8,8 +8,9 @@
     </div>
 
     <div class="right menu" *ngIf='!authorized$'>
-      <a class="item" href="https://accounts.spotify.com/authorize?client_id={{clientId}}&response_type=token&redirect_uri={{redirectUri}}">
-        Connect Spotify
+      <a class="item" href="https://accounts.spotify.com/authorize?client_id={{clientId}}&scope={{scope}}&response_type=token&redirect_uri={{redirectUri}}">
+        <!-- <i class='fa fa-spotify fa-2x'></i>Connect Spotify -->
+        <img src="../../../assets/Spotify_Logo_CMYK_Green.png" style="width: 100px;"/>
       </a>
     </div>
 

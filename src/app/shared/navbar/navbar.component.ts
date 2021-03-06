@@ -10,6 +10,7 @@ import { GlobalService } from 'src/app/global.service';
 export class NavbarComponent implements OnInit {
   clientId: string = 'cba0314e54f34815af7a43d3470fb4cb'
   redirectUri: string = 'http://localhost:4200/authorize'
+  scope: string = 'user-read-private user-read-email user-top-read'
   authorized$
 
   constructor(public gs: GlobalService) {
