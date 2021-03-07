@@ -20,6 +20,8 @@ export class ArtistMainPageComponent implements OnInit {
       })
 
     this.test$ = this.news.getNewsForEachArtist(this.artistName)
+
+    console.log(this.test$)
   }
 
 }

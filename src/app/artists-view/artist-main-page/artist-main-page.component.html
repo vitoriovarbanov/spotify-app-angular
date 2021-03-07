@@ -1,4 +1,15 @@
-<p>artist-main-page works!</p>
-<p *ngFor='let tt of test$ | async'>
-  <span>{{tt.title}}</span>
-</p>
+<div class="ui cards">
+    <div class="card"  *ngFor='let tt of test$ | async'>
+      <div class="content">
+        <div class="header">{{tt.title}}</div>
+        <div class="description">
+         {{tt.description}}
+        </div>
+        <div class="description"><a href="{{tt.url}}" target="_blank">Visit Website</a></div>
+      </div>
+</div>
+
+
+
+
+

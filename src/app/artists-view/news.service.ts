@@ -15,12 +15,10 @@ export class NewsService {
     const headers = new HttpHeaders({ 'Authorization': `${localStorage.getItem('newsApiKey')}` })
     return this.http.get(`${this.newsApiUrl}q=${artistName}&language=en`, { headers: headers })
       .pipe(map((data) => {
-        return data['articles'].map(x => {
-          return {
-            description: x.description,
-            title: x.title,
-            url: x.url
-          }
+        console.log(data)
+        return data['articles'].filter(x=>{
+          x.description = x.description.replace(/<[^>]*>/g, '');
+          return x.description.includes(artistName)
         })
       }))
   }
