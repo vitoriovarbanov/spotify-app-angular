@@ -1,5 +1,8 @@
-<img class="ui small circular image" src="{{artistImg$ | async}}" style="margin: 0 auto; padding: 10px;">
-<div class="ui inverted segment">
+<div class="ui segment" [style.background-image]="'url(../../assets/photo-1534445817031-c529c7186f30.png)'"
+style="background-position: 10% 90%; height:300px;" id='segment-top' >
+  <img class="ui small circular image" src="{{artistImg$ | async}}" style="margin: 0 auto; padding: 10px;">
+</div>
+<div class="ui inverted segment" id='segment-top'>
   <div class="ui inverted relaxed divided list">
     <h3>Top Tracks:</h3>
     <div class="item" *ngFor='let track of topTracksInfo | async'>
