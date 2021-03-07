@@ -8,7 +8,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class GlobalService {
   authorized$ = new BehaviorSubject(null)
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    localStorage.setItem('newsApiKey', '72dafc068f3b4b1ca8c670ddcc5368ce')
+  }
 
   getUserPlaylists(){
     const token = localStorage.getItem('bearerToken')

@@ -8,7 +8,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { map, tap, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { GlobalService } from './global.service';
 
@@ -22,11 +22,20 @@ export class SpotifyInterceptor implements HttpInterceptor {
   constructor(private router: Router, private gs: GlobalService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    request = request.clone({
-      setHeaders: {
-        'Authorization': `Bearer ${localStorage.getItem('bearerToken')}`
-      }
-    })
+    if(request.url.includes('newsapi.org')){
+      request = request.clone({
+        setHeaders: {
+          'Authorization': `${localStorage.getItem('newsApiKey')}`
+        }
+      })
+    }else{
+      request = request.clone({
+        setHeaders: {
+          'Authorization': `Bearer ${localStorage.getItem('bearerToken')}`
+        }
+      })
+    }
+
 
     return next.handle(request)
       .pipe(catchError((err: HttpErrorResponse) => {

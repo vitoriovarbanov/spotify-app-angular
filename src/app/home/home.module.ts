@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeViewComponent } from './home-view/home-view.component';
 
-
 @NgModule({
   declarations: [
     HomeViewComponent
@@ -13,6 +12,7 @@ import { HomeViewComponent } from './home-view/home-view.component';
     CommonModule,
     HomeRoutingModule
   ],
+  providers: [],
   exports: [
     HomeViewComponent
   ]
