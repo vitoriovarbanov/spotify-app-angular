@@ -1,11 +1,16 @@
 <div class="ui segment" [style.background-image]="'url(../../assets/photo-1504509546545-e000b4a62425.png)'" id='jumbotron'>
+  <ng-container *ngIf='!authorized'>
     <h3 style="font-style: italic; color: white;">Reveal your favourite Spotify artists with our Web App & get all the latest news</h3>
-    <h3 style="font-style: italic; color: white;">Log In & discover More</h3>
+    <h3 style="font-style: italic; color: white;">Log In & discover more</h3>
+  </ng-container>
+  <ng-container *ngIf='authorized'>
+    <h3 style="font-style: italic; color: white;">Hello, {{user$ | async}}</h3>
+  </ng-container>
 </div>
 
 
 <ng-container *ngIf='authorized'>
-    <div class="ui link cards">
+    <div class="ui link cards" style="display: flex; justify-content: center;">
       <div class="card" *ngFor='let artist of favouriteArtists'>
         <div class="image">
           <a routerLink="artists/{{artist.name}}/{{artist.id}}"><img src="{{artist.images[0].url}}" style="width: 280px; height: 280px;"></a>

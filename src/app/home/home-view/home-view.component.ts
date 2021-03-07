@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class HomeViewComponent implements OnInit {
   authorized
   favouriteArtists
+  user$
 
   constructor(private gs: GlobalService, private fav: FavouritesService, private router: Router) {
     this.gs.authorized$.subscribe(data=>{
@@ -26,6 +27,8 @@ export class HomeViewComponent implements OnInit {
        // console.log(this.favouriteArtists)
       })
     }
+
+    this.user$ =  this.gs.currentUser()
   }
 
 }
