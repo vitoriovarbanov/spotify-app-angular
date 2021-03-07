@@ -15,6 +15,8 @@ export class ArtistMainPageComponent implements OnInit {
   test$
   topTracksInfo;
 
+  url = `https://open.spotify.com/embed/track/`
+
   constructor(private news: NewsService, private router: ActivatedRoute,
     private spotifySrv: SpotifyService) { }
 
@@ -26,8 +28,8 @@ export class ArtistMainPageComponent implements OnInit {
       })
     this.test$ = this.news.getNewsForEachArtist(this.artistName)
     this.artistImg$ = this.spotifySrv.getArtistImg(this.id)
-     this.topTracksInfo = this.spotifySrv.getArtistsTopTracks(this.id)
-      //.subscribe(data=>console.log(data))
+    /* this.topTracksInfo = */ this.spotifySrv.getArtistsTopTracks(this.id)
+      .subscribe(data=>this.topTracksInfo = data)
   }
 
 }
