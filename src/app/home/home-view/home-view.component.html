@@ -7,7 +7,7 @@
     <div class="ui link cards">
       <div class="card" *ngFor='let artist of favouriteArtists'>
         <div class="image">
-          <a routerLink="artists/{{artist.id}}"><img src="{{artist.images[0].url}}" style="width: 280px; height: 280px;"></a>
+          <a routerLink="artists/{{artist.name}}/{{artist.id}}"><img src="{{artist.images[0].url}}" style="width: 280px; height: 280px;"></a>
         </div>
         <div class="content">
           <div class="header">{{artist.name}}</div>

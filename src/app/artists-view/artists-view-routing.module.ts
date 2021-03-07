@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArtistMainPageComponent } from './artist-main-page/artist-main-page.component';
 
 const routes: Routes = [
-  { path: ':id', component: ArtistMainPageComponent }
+  { path: ':name/:id', component: ArtistMainPageComponent }
 ];
 
 @NgModule({
