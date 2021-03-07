@@ -1,1 +1,4 @@
 <p>artist-main-page works!</p>
+<p *ngFor='let tt of test$ | async'>
+  <span>{{tt.title}}</span>
+</p>

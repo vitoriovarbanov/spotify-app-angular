@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../news.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-artist-main-page',
@@ -7,12 +8,18 @@ import { NewsService } from '../news.service';
   styleUrls: ['./artist-main-page.component.css']
 })
 export class ArtistMainPageComponent implements OnInit {
+  artistName: string;
+  test$
 
-  constructor(private news: NewsService) { }
+  constructor(private news: NewsService, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.news.getNewsForEachArtist()
-      .subscribe(data=>console.log(data))
+    this.router.params
+      .subscribe(data=>{
+        this.artistName = data['name']
+      })
+
+    this.test$ = this.news.getNewsForEachArtist(this.artistName)
   }
 
 }

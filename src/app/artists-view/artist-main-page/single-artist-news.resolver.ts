@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 import {
-  Router, Resolve,
+  Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+
+import { NewsService } from '../news.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SingleArtistNewsResolver implements Resolve<boolean> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return of(true);
+export class SingleArtistNewsResolver implements Resolve<any> {
+  constructor(private news: NewsService){}
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+
+    const id = route.params['id']
+    console.log(route.params)
+
+    return this.news.getNewsForEachArtist()
   }
 }

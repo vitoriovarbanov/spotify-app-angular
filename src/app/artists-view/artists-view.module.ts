@@ -13,7 +13,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     ArtistsViewRoutingModule,
     HttpClientModule,
-    RouterModule
-  ]
+    RouterModule,
+  ],
+  providers: []
 })
 export class ArtistsViewModule { }

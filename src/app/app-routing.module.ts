@@ -5,12 +5,13 @@ import { HomeViewComponent } from './home/home-view/home-view.component';
 
 const routes: Routes = [
   { path: 'authorize', component: AuthorizeComponent },
-  { path: 'artists', loadChildren: () => import('./artists-view/artists-view.module').then(m => m.ArtistsViewModule) },
+  { path: 'artists', loadChildren: () => import('./artists-view/artists-view.module').then(m => m.ArtistsViewModule)},
   { path: '', pathMatch: 'full', component: HomeViewComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
 export class AppRoutingModule { }

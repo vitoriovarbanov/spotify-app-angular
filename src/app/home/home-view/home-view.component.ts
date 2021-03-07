@@ -23,7 +23,7 @@ export class HomeViewComponent implements OnInit {
       this.fav.getUserFavouriteArtists()
       .subscribe(data=>{
         this.favouriteArtists = data
-        console.log(this.favouriteArtists)
+       // console.log(this.favouriteArtists)
       })
     }
   }
