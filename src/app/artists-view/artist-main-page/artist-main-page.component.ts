@@ -26,8 +26,8 @@ export class ArtistMainPageComponent implements OnInit {
       })
     this.test$ = this.news.getNewsForEachArtist(this.artistName)
     this.artistImg$ = this.spotifySrv.getArtistImg(this.id)
-    this.spotifySrv.getArtistsTopTracks(this.id)
-      .subscribe(data=>console.log(data))
+     this.topTracksInfo = this.spotifySrv.getArtistsTopTracks(this.id)
+      //.subscribe(data=>console.log(data))
   }
 
 }

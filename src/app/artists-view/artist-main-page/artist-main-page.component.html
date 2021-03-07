@@ -1,11 +1,12 @@
 <img class="ui small circular image" src="{{artistImg$ | async}}" style="margin: 0 auto; padding: 10px;">
-
 <div class="ui inverted segment">
   <div class="ui inverted relaxed divided list">
-    <div class="item">
+    <div class="item" *ngFor='let track of topTracksInfo | async'>
       <div class="content">
-        <div class="header">Snickerdoodle</div>
-        An excellent companion
+        <img src="{{track.album.images[0].url}}" class="ui small circular image"/>
+        <div class="header">{{track.name}}</div>
+        <!-- <iframe [src]="track.uri | safe" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><div class="dropdown"></div> -->
+
       </div>
     </div>
 </div>
