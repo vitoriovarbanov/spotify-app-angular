@@ -7,7 +7,7 @@
     <div class="ui link cards">
       <div class="card" *ngFor='let artist of favouriteArtists'>
         <div class="image">
-          <img src="{{artist.images[0].url}}" style="width: 280px; height: 280px;">
+          <a routerLink="artists/{{artist.id}}"><img src="{{artist.images[0].url}}" style="width: 280px; height: 280px;"></a>
         </div>
         <div class="content">
           <div class="header">{{artist.name}}</div>
@@ -15,7 +15,7 @@
             <a>Main Genre - {{artist.genres[0]}}</a>
           </div>
          <!--  <div class="description">
-            Matthew is an interior designer living in New York.
+
           </div> -->
         </div>
         <div class="extra content">

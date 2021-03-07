@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
 import { FavouritesService } from '../favourites.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-view',
@@ -11,7 +12,7 @@ export class HomeViewComponent implements OnInit {
   authorized
   favouriteArtists
 
-  constructor(private gs: GlobalService, private fav: FavouritesService) {
+  constructor(private gs: GlobalService, private fav: FavouritesService, private router: Router) {
     this.gs.authorized$.subscribe(data=>{
       this.authorized = data;
     })
@@ -25,7 +26,6 @@ export class HomeViewComponent implements OnInit {
         console.log(this.favouriteArtists)
       })
     }
-
   }
 
 }

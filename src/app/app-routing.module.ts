@@ -4,8 +4,9 @@ import { AuthorizeComponent } from './authorize/authorize.component';
 import { HomeViewComponent } from './home/home-view/home-view.component';
 
 const routes: Routes = [
-  {path: '', component: HomeViewComponent},
-  {path: 'authorize', component: AuthorizeComponent}
+  { path: 'authorize', component: AuthorizeComponent },
+  { path: 'artists', loadChildren: () => import('./artists-view/artists-view.module').then(m => m.ArtistsViewModule) },
+  { path: '', pathMatch: 'full', component: HomeViewComponent },
 ];
 
 @NgModule({
