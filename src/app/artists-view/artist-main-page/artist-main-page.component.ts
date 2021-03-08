@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../news.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../spotify.service';
 
 @Component({
@@ -22,14 +22,15 @@ export class ArtistMainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params
-      .subscribe(data=>{
+      .subscribe(data => {
         this.artistName = data['name']
         this.id = data['id']
       })
     this.test$ = this.news.getNewsForEachArtist(this.artistName)
     this.artistImg$ = this.spotifySrv.getArtistImg(this.id)
     /* this.topTracksInfo = */ this.spotifySrv.getArtistsTopTracks(this.id)
-      .subscribe(data=>this.topTracksInfo = data)
+      .subscribe(data => this.topTracksInfo = data)
   }
+
 
 }

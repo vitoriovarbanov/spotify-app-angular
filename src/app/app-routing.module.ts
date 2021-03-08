@@ -6,6 +6,7 @@ import { HomeViewComponent } from './home/home-view/home-view.component';
 const routes: Routes = [
   { path: 'authorize', component: AuthorizeComponent },
   { path: 'artists', loadChildren: () => import('./artists-view/artists-view.module').then(m => m.ArtistsViewModule)},
+  { path: '**', redirectTo: '', component: HomeViewComponent },
   { path: '', pathMatch: 'full', component: HomeViewComponent },
 ];
 
