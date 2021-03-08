@@ -8,6 +8,9 @@
   </ng-container>
 </div>
 
+<ng-container *ngIf='!authorized'>
+  <app-featured-artists></app-featured-artists>
+</ng-container>
 
 <ng-container *ngIf='authorized'>
     <div class="ui link cards" style="display: flex; justify-content: center;">
