@@ -11,9 +11,10 @@ export class FavouritesService {
   constructor(private http: HttpClient, private gs: GlobalService) { }
 
   getUserFavouriteArtists() {
-      return this.http.get(`https://api.spotify.com/v1/me/top/artists`)
+      return this.http.get(`https://api.spotify.com/v1/me/following?type=artist`)
         .pipe(map((data) => {
-          return data['items']
+          data = Object.values(data)
+          return data[0]['items']
         }))
   }
 }

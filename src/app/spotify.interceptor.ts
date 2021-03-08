@@ -16,7 +16,7 @@ import { GlobalService } from './global.service';
 export class SpotifyInterceptor implements HttpInterceptor {
   clientId: string = 'cba0314e54f34815af7a43d3470fb4cb'
   redirectUri: string = 'http://localhost:4200/authorize'
-  scope: string = 'user-read-private user-read-email user-top-read user-follow-read'
+  scope: string = 'user-read-private user-read-email user-top-read user-follow-read user-follow-modify'
   authorized
 
   constructor(private router: Router, private gs: GlobalService) { }

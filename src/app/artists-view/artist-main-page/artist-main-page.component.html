@@ -2,16 +2,15 @@
 style="background-position: 10% 90%; height:300px;" id='segment-top' >
   <img class="ui small circular image" src="{{artistImg$ | async}}" style="margin: 0 auto; padding: 10px;">
 </div>
-<div class="ui inverted segment" id='segment-top'>
+<div class="ui inverted segment" id='segment-top' style="background-color: black;">
   <div class="ui inverted relaxed divided list">
     <h3>Top Tracks:</h3>
     <div class="item" *ngFor='let track of topTracksInfo'>
       <div class="content">
         <div style="display: flex; flex-direction: row;">
-          <img src="{{track.album.images[0].url}}" class="ui small circular image"/>
-          <iframe [src]=" url + track.id | safe" width="600" height="150" frameborder="0" allowtransparency="true" allow="encrypted-media" style="margin-left: 50px;"></iframe>
+          <img src="{{track.album.images[0].url}}" class="ui small circular image" style="min-width: 150px;"/>
+          <iframe [src]=" url + track.id | safe" width="1600" height="150" frameborder="0" allowtransparency="true" allow="encrypted-media" style="margin-left: 50px;"></iframe>
         </div>
-
         <span class="header" style="margin-left: 20px;">{{track.name}}</span>
       </div>
     </div>
