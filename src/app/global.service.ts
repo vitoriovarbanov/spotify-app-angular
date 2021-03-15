@@ -46,10 +46,7 @@ export class GlobalService {
       }
       // Encode the String
       localStorage.setItem('randomString', result)
-      //hello
       this.encodedString = btoa(result);
-      //lalalala
-      //localStorage.setItem('randomString', encodedStringBtoA)
       return result;
     }
   }

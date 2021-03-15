@@ -9,17 +9,22 @@ import { GlobalService } from '../global.service';
 })
 export class AuthorizeComponent implements OnInit {
   showNotification = false;
+
   constructor(private router: Router, private globalService: GlobalService) {
     var hash_array = location.hash.substring(1).split('&');
     var hash_key_val = new Array(hash_array.length);
     for (var i = 0; i < hash_array.length; i++) {
       hash_key_val[i] = hash_array[i].split('=');
     }
-    let stringArr = hash_array[3].split('=')
-    let credentialsArr = hash_array[0].split('=')
-    let bearer = credentialsArr[1]
-    let recievedState = stringArr[1]
-    let decodedStringAtoB = atob(recievedState);
+    let stringArr, credentialsArr, bearer, recievedState;
+    let decodedStringAtoB = '/'
+    if (hash_array[3] && hash_array[0]) {
+      stringArr = hash_array[3].split('=')
+      credentialsArr = hash_array[0].split('=')
+      bearer = credentialsArr[1]
+      recievedState = stringArr[1]
+      decodedStringAtoB = atob(recievedState);
+    }
     const string = localStorage.getItem('randomString')
     window.history.pushState("", "", '/authorize')
     if (decodedStringAtoB === string) {
@@ -30,16 +35,15 @@ export class AuthorizeComponent implements OnInit {
       this.showNotification = true;
       this.globalService.authorized$.next(false)
     }
-
   }
 
   ngOnInit(): void { }
 
-  refresh(){
+  refresh() {
     this.router.navigate([''])
-    setTimeout(()=>{
+    setTimeout(() => {
       window.location.reload();
-    },1000)
+    }, 1000)
 
   }
 

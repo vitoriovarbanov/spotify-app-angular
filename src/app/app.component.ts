@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
       this.gs.authorized$.next(true)
     }
     //create new string
-
     this.gs.makeid(6)
   }
 
