@@ -10,6 +10,7 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class GlobalService {
   authorized$ = new BehaviorSubject(null)
+  encodedString: string;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     localStorage.setItem('newsApiKey', '72dafc068f3b4b1ca8c670ddcc5368ce')
@@ -43,9 +44,13 @@ export class GlobalService {
           }
         });
       }
+      // Encode the String
       localStorage.setItem('randomString', result)
+      //hello
+      this.encodedString = btoa(result);
+      //lalalala
+      //localStorage.setItem('randomString', encodedStringBtoA)
       return result;
     }
   }
-
 }

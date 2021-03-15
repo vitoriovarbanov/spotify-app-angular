@@ -19,9 +19,10 @@ export class AuthorizeComponent implements OnInit {
     let credentialsArr = hash_array[0].split('=')
     let bearer = credentialsArr[1]
     let recievedState = stringArr[1]
+    let decodedStringAtoB = atob(recievedState);
     const string = localStorage.getItem('randomString')
-    //window.history.pushState("", "", '/authorize')
-    if (recievedState === string) {
+    window.history.pushState("", "", '/authorize')
+    if (decodedStringAtoB === string) {
       localStorage.setItem('bearerToken', bearer)
       this.globalService.authorized$.next(true)
       this.router.navigate([''])
