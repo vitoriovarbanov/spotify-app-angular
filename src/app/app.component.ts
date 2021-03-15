@@ -7,14 +7,19 @@ import { GlobalService } from './global.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   constructor(private gs: GlobalService) {
     const credits = localStorage.getItem('bearerToken')
-    if(credits==="undefined" || !credits){
+    if (credits === "undefined" || !credits) {
       this.gs.authorized$.next(false)
-    }else{
+    } else {
       this.gs.authorized$.next(true)
     }
+    //create new string
+
+    this.gs.makeid(6)
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
+
 }

@@ -8,7 +8,7 @@
     </div>
 
     <div class="right menu" *ngIf='!authorized$'>
-      <a class="item" href="https://accounts.spotify.com/authorize?client_id={{clientId}}&scope={{scope}}&response_type=token&redirect_uri={{redirectUri}}">
+      <a class="item" href="https://accounts.spotify.com/authorize?client_id={{clientId}}&scope={{scope}}&response_type=token&redirect_uri={{redirectUri}}&state={{state}}">
         <img src="../../../assets/Spotify_Logo_CMYK_Green.png" style="width: 130px;"/>
       </a>
     </div>
