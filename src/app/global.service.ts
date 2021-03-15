@@ -25,17 +25,27 @@ export class GlobalService {
   }
 
   makeid(length) {
-    if(!window.location.href.includes('authorize')){
-      let randomString = '';
-      let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let charactersLength = characters.length;
-      for (let i = 0; i < length; i++) {
-        randomString += characters.charAt(Math.floor(Math.random() * charactersLength));
+    if (!window.location.href.includes('authorize')) {
+      var charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._'
+      let result = ''
+
+      while (length > 0) {
+        var bytes = new Uint8Array(16);
+        var random = window.crypto.getRandomValues(bytes);
+
+        random.forEach(function (c) {
+          if (length == 0) {
+            return;
+          }
+          if (c < charset.length) {
+            result += charset[c];
+            length--;
+          }
+        });
       }
-      localStorage.setItem('randomString', randomString)
-      return randomString;
+      localStorage.setItem('randomString', result)
+      return result;
     }
   }
-
 
 }

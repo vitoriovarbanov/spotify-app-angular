@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./authorize.component.css']
 })
 export class AuthorizeComponent implements OnInit {
-  constructor(private globalService: GlobalService) {
+  constructor(private router: Router, private globalService: GlobalService) {
     var hash_array = location.hash.substring(1).split('&');
     var hash_key_val = new Array(hash_array.length);
     for (var i = 0; i < hash_array.length; i++) {
@@ -27,7 +27,7 @@ export class AuthorizeComponent implements OnInit {
     } else {
       this.globalService.authorized$.next(false)
     }
-    //this.router.navigate([''])
+    this.router.navigate([''])
   }
 
   ngOnInit(): void { }
