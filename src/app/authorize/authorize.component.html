@@ -1,1 +1,9 @@
-<p>authorize works!</p>
+<ng-template [ngIf]='showNotification'>
+<div class="ui placeholder segment">
+  <div class="ui icon header">
+    <p style="font-style: italic;">Your Authorization token is either expired or not correct!</p>
+    <p style="font-style: italic;">Please click the button to return to Home page and automatically request new one!</p>
+  </div>
+  <div class="ui inverted red button" (click)="refresh()">Go Back</div>
+</div>
+</ng-template>>

@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
 
   logOutUser(){
     this.gs.authorized$.next(false)
+    this.gs.makeid(6)
     localStorage.removeItem('bearerToken')
     localStorage.removeItem('email')
   }

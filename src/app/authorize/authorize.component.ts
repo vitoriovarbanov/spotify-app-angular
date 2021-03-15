@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../global.service';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-authorize',
@@ -9,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./authorize.component.css']
 })
 export class AuthorizeComponent implements OnInit {
+  showNotification = false;
   constructor(private router: Router, private globalService: GlobalService) {
     var hash_array = location.hash.substring(1).split('&');
     var hash_key_val = new Array(hash_array.length);
@@ -19,17 +19,27 @@ export class AuthorizeComponent implements OnInit {
     let credentialsArr = hash_array[0].split('=')
     let bearer = credentialsArr[1]
     let recievedState = stringArr[1]
-    localStorage.setItem('bearerToken', bearer)
     const string = localStorage.getItem('randomString')
-    window.history.pushState("", "", '/authorize')
+    //window.history.pushState("", "", '/authorize')
     if (recievedState === string) {
+      localStorage.setItem('bearerToken', bearer)
       this.globalService.authorized$.next(true)
+      this.router.navigate([''])
     } else {
+      this.showNotification = true;
       this.globalService.authorized$.next(false)
     }
-    this.router.navigate([''])
+
   }
 
   ngOnInit(): void { }
+
+  refresh(){
+    this.router.navigate([''])
+    setTimeout(()=>{
+      window.location.reload();
+    },1000)
+
+  }
 
 }
